@@ -1,0 +1,15 @@
+.blogItemName {
+    font-family: 'Rubik Distressed', cursive;
+    font-size: 25px;
+}
+
+::-webkit-scrollbar {
+    width: 0.2vw;
+    height: 0.4vh;
+}
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background-color: gray;
+}

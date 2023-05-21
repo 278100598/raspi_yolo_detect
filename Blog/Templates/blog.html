@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head>
+  <title>Tyi77 Blog</title>
+  <meta charset="utf-8">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Distressed&display=swap" rel="stylesheet">
+
+</head>
+<body class="d-flex justify-content-center">
+  <div class="container d-flex justify-content-center bg-warning bg-gradient" style="height: 100vh; position: absolute;">
+    <div class="container d-flex justify-content-around">
+      <!-- left -->
+      <div class="d-flex flex-column" style="width: 25%;">
+        <!-- form -->
+        <form action="/submit" method="post" style="width: 100%; height: 50%;">
+          <div>
+            <label for="username" class="fw-bold"><h2>Name: </h2></label>
+            <input type="text" class="form-control" name="username" id="username" required>
+          </div>
+          <div>
+            <label for="title" class="fw-bold"><h2>Title: </h2></label>
+            <input type="text" class="form-control" name="title" id="title" required>
+          </div>
+          <div class="mb-2">
+            <label for="message" class="fw-bold"><h2>Message: </h2></label>
+            <textarea class="form-control" name="message" id="message" rows="3" required></textarea>
+          </div>
+          <div class="d-flex justify-content-end">
+            <input type="submit" class="btn btn-light fw-bold" value="Submit!">
+          </div>
+        </form>
+        <!-- Quotes father -->
+        <div class="d-flex justify-content-center align-items-center" style="height: 50%;">
+          <!-- Quote -->
+          <div class="d-flex justify-content-evenly align-items-center" style="width: 80%; height: 30%; background-color: #000;">
+            <p><a href="tcp"><button type="button" class="btn btn-light">TCP</button></a></p>
+            <p><a href="udp"><button type="button" class="btn btn-light">UDP</button></a></p>
+          </div>
+        </div>
+      </div>
+      <!-- Blogs -->
+      <div class="d-flex justify-content-start align-items-start flex-wrap align-content-start" style="margin: 0 auto; max-height: 100vh; width: 45%; overflow-y: scroll;">
+        {% for idx in blogIdList %}
+          <!-- One piece of the Blog -->
+          <div class="d-flex flex-column justify-content-start align-items-start rounded shadow px-3 pb-2 m-2" style="width: 47%; height: 25%; background-color: rgba(255,255,255, 0.5);">
+            <div style="width: 100%;">
+              <div class="blogItemName">Name: </div>
+              <div style="word-break: keep-all; overflow-x: auto;">{{blog[idx]['username']}}</div>
+            </div>
+            <div style="width: 100%;">
+              <div class="blogItemName">Title: </div>
+              <div style="word-break: keep-all; overflow-x: auto;">{{blog[idx]['title']}}</div>
+            </div>
+            <div style="height: 28%;">
+              <div class="blogItemName">Message: </div>
+              <div style="word-break: break-all; overflow-y: auto; max-height: 100%;">{{blog[idx]['message']}}</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</body>
+</html>
